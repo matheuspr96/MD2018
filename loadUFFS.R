@@ -23,3 +23,8 @@ uffs&desc_turma <- as.character(uffs&desc_turma)
 #rbind(a,b)
 
 #factor, ordinal-> Ordenado
+
+
+#notebook
+#marckdown
+
