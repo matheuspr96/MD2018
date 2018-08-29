@@ -1,3 +1,3 @@
 #!/bin/bash
-MinerioTeste <- read.csv("./dados/FCessoes_de_Direitos.csv")
-View(MinerioTeste)
+FCessoes_de_Direitos <- read.csv("./dados/FCessoes_de_Direitos.csv")
+View(FCessoes_de_Direitos)

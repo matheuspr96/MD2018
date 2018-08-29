@@ -1,0 +1,46 @@
+---
+title: "Atividade 4 - Mineração de dados"
+author: "Matheus Pimenta Reis"
+output: html_notebook
+---
+
+
+# Atividade proposta:
+
+* selecionar variáveis numéricas e fazer summary e boxplot
+* selecionar variáveis categóricas e fazer tabelas marginais `table`
+* incluir essas pré-analises no diretorio de analise em arquivos .Rmd
+* pull request
+
+- selecionar variáveis numéricas e fazer summary e boxplot
+```{r}
+ #1. Remover colunas não necessárias e realizar a transformações dos dados para seus respectivos tipos
+ 
+#Criar um temp para não alterar o arquico original
+ rm(FCessoes_de_DireitosTemp)
+ FCessoes_de_DireitosTemp <-  FCessoes_de_Direitos
+
+
+#Removendo colunas desnecessarias
+ str(FCessoes_de_DireitosTemp )
+ FCessoes_de_DireitosTemp  <- subset(FCessoes_de_DireitosTemp , select = -c(Processo,Situacao))
+
+ #Convertendo
+ FCessoes_de_DireitosTemp$`Data da Cessao`  <- as.Date(FCessoes_de_DireitosTemp$`Data da Cessao`)
+ str(FCessoes_de_DireitosTemp )
+ 
+ summary(FCessoes_de_DireitosTemp$`Data da Cessao`)
+
+ boxplot(FCessoes_de_DireitosTemp$`Data da Cessao`)
+ 
+ rm(tabelaContigencia)
+ tabelaContigencia <- table(FCessoes_de_DireitosTemp$`Municipio(s)`)
+ margin.table(tabelaContigencia)
+```
+* selecionar variáveis categóricas e fazer tabelas marginais `table`
+
+```{r}
+ rm(tabelaContigencia)
+ tabelaContigencia <- table(FCessoes_de_DireitosTemp$`Municipio(s)`)
+ margin.table(tabelaContigencia)
+```
