@@ -1,0 +1,20 @@
+---
+title: "Relatório minerio"
+author: "Matheus Pimenta Reis"
+output: ioslides_presentation
+---
+
+#Análise dados minerio
+
+Previamente configura-se o ambiente carregando os pacotes necessários.
+```{r}
+Sys.setenv(https_proxy="proxy.ufu.br:3128")
+require(pacman)
+
+```
+
+Apos carregar os pacotes é feita uma análise previa dos dados, como tipo e estrutura.
+```{r}
+source(dados/)
+str(FCessoes_de_direitos.csv)
+#Carregamos os dados
