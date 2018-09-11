@@ -1,0 +1,44 @@
+---
+title: "Mineração de dados - Atividade da Aula 5"
+author: "Matheus Pimenta Reis"
+output: html_notebook
+---
+
+## Fazer figuras usando os dados do seu dataset com o ggplot2 e dplyr
+```{r}
+remove(FCessoes_de_Direitos)
+```
+
+
+# Carregar os pacotes e CSVs nesessarios
+```{r}
+
+require(pacman)
+p_load(readr)
+p_load(tidyverse)
+p_load(dplyr)
+
+FCessoes_de_Direitos <- read.csv("/Bibliotecas/Área de trabalho/Mineracao/MD2018/dados/CSVs/FCessoes_de_Direitos.csv")
+
+```
+
+#Manipulamos os dados a fim de obter informação útil.
+Usamos `attach` para facilitar o acesso aos elementos do dataset
+```{r}
+attach(FCessoes_de_Direitos)
+```
+
+Resultados
+
+No primeiro experimento foi obtido a relação de quais requerimentos são os mais solicitados por superintencencia, ou seja, estado
+```{r}
+ggplot(data=FCessoes_de_Direitos) + geom_bar(mapping = aes(x = Tipo.de.requerimento ,y = Superintendencia, color=Superintendencia),stat = "identity")  + coord_flip()
+```
+
+
+No segundo experimento foi obtido quais superintendencias estam envolvidas em mais processos
+```{r}
+
+ggplot(data=FCessoes_de_Direitos, aes(x=FCessoes_de_Direitos$Superintendencia))+geom_bar() + coord_flip()
+```
+
