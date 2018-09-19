@@ -1,0 +1,32 @@
+Possíveis problemas de classificação ou regressão no conjunto de dados Minerios
+========================================================
+author: Matheus Pimenta Reis
+Mineração De Dados
+
+========================================================
+# Carregar os pacotes e CSVs nesessarios 
+```{r}
+
+require(pacman)
+p_load(readr)
+p_load(tidyverse)
+p_load(dplyr)
+require(png)
+
+FCessoes_de_Direitos <- read.csv("./dados/CSVs/FCessoes_de_Direitos.csv")
+str(FCessoes_de_Direitos)
+
+```
+
+========================================================
+#Da análise dos dados se obteve
+```{r}
+data(FCessoes_de_Direitos$Superintendencia)
+
+
+```
+
+
+
+
+========================================================
