@@ -1,0 +1,11 @@
+---
+title: "6_Atividade"
+author: "Matheus Pimenta Reis"
+date: "18 de outubro de 2018"
+output: html_document
+---
+
+#Atividade 6: fazer apresentação sobre problema de classificação
+
+A atividade foi feita por meio do PREZI, segue link:
+https://prezi.com/view/1W4qOfrLZJMS2lY4pXvT/
