@@ -1,4 +1,11 @@
 ---
+title: "4_atividade"
+author: "Matheus Pimenta Reis"
+date: "18 de outubro de 2018"
+output: html_document
+---
+
+---
 title: "Atividade 4 - Mineração de dados"
 author: "Matheus Pimenta Reis"
 output: html_notebook
@@ -20,16 +27,24 @@ require(ggplot2)
 
 #Como o DataSet escolhido em aula não possui váriaveis numéricas, foi utilizado o DataSet IRIS
  
+
 #Tamanho do comprimento da petala
- summary(irisDataFrame$Petal.Length)
+ summary(iris$Petal.Length)
 
  #Tamanho da altura da petala
- boxplot(irisDataFrame$Petal.Width)
+ boxplot(iris$Petal.Width)
  
 ```
 
 
 ```{r}
+#Carrego os pacotes necessários
+require(pacman)
+require(dplyr)
+
+source("./Script.R")
+
+
 #Seleciono as colunas que quero do dataFrame
 prepareTableContigencia <- select(FCessoes_de_Direitos,"Municipio.s.","Substancia.s.")
 
