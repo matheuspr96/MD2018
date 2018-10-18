@@ -1,0 +1,13 @@
+---
+title: "Atividade_2"
+author: "Matheus Pimenta Reis"
+date: "17 de outubro de 2018"
+output: html_document
+---
+
+#Descrição atividade 
+
+  Criar projeto no RStudio ligado ao github. Criar arquivo Makefile para controlar download de dados. Criar script para fazer download e pré-processamento. Fazer commit dos arquivos novos no repositório git. Fazer pull request.
+
+  Foi criado um script que comtempla a desrição da atividade, como o usuario teve problemas com o uso do linux, somente foi executado uma vez em tal sistema(UBUNTU) alterando as permisões para poder execultar o Script!.
+    Apóso procedimento o usuario usou o sistema operacional Windows.
