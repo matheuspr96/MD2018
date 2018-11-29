@@ -1,0 +1,86 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+require(pacman)
+p_load(plyr,doParallel,caret)
+```
+
+#Configura multiThreding
+```{r}
+cl <- makeCluster(detectCores()-2)
+registerDoParallel(cl)
+```
+
+#configura entradas
+```{r}
+santander <- read.csv("./Dados/train.csv")
+santander$TARGET <- as.factor(santander$TARGET) 
+plot(santander$TARGET)
+count(santander$TARGET)
+```
+
+
+#Tratando dados
+```{r}
+ plot(santander$TARGET)
+```
+
+Os dados estão distribuidos desigualmente, será ralizado uma normalzação
+selecionando todos os TARGETs com valor igual a 0.
+
+```{r}
+targetPOS <- subset(santander, TARGET == 1)
+```
+
+Foram obtidos 3.000 resultados, pegamos 8.000 amostras aleatórias do dataSet com resultados somente igual 0 e concatenamos 
+```{r}
+s <- sample(76020,8000) 
+targetNEG <- subset(santander[s,],TARGET == 0)
+
+x_santander_train <- rbind(targetPOS, targetNEG)
+col <- c("var15","saldo_var30","var38","saldo_var42","saldo_medio_var5_hace2","saldo_medio_var5_ult3","saldo_medio_var5_ult1","saldo_var5","saldo_medio_var5_hace3","num_meses_var5_ult3","num_var45_ult3","num_var35","num_var30","num_var4","num_var22_ult3","ind_var30","num_var45_hace3","num_var45_hace2","var36","num_med_var45_ult3","num_var45_ult1","num_var5","num_var42","num_var22_hace2","num_var22_hace3","num_var22_ult1","imp_op_var39_ult1","ind_var5","imp_op_var41_ult1","TARGET")
+count(x_santander_train)
+x_santander_train <- x_santander_train[,col]
+names
+```
+
+#preparando parametros
+```{r}
+control <- trainControl(method="repeatedcv", number=5, repeats=3)
+metric <- "Accuracy"
+set.seed(7)
+```
+
+#Svm com kernel linear
+```{r}
+modelo_svmLinear <- train(TARGET~.,
+                         data=x_santander_train,
+                         method="svmLinear",
+                         trControl=control)
+print(modelo_svmLinear)
+table(predict(modelo_svmLinear,x_santander_train),x_santander_train$TARGET)
+```
+
+
+#SVM com kernel polinomial
+```{r}
+ modelo_svmPoly <- train(TARGET~.,
+                         data=x_santander_train,
+                         method="svmPoly",
+                         trControl=control)
+ print(modelo_svmPoly)
+  table(predict(modelo_svmPoly,x_santander_train),x_santander_train$TARGET)
+```
+#SVM com kernel radial
+```{r}
+ modelo_svmRadial <- train(TARGET~.,
+                         data=x_santander_train,
+                         method="svmRadial",
+                         trControl=control)
+ print(modelo_svmRadial)
+  table(predict(modelo_svmRadial,x_santander_train),x_santander_train$TARGET)
+```
+
