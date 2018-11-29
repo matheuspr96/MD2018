@@ -9,3 +9,6 @@ output: html_document
 
 A atividade foi feita por meio do PREZI, segue link:
 https://prezi.com/view/1W4qOfrLZJMS2lY4pXvT/
+
+
+Os plots estão disponiveis em uma subpasta dentro desta atividade
