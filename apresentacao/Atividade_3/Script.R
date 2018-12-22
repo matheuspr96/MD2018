@@ -10,7 +10,7 @@ p_load(readr)
 p_load(tidyverse)
 
 #Carrego o DataSet
-FCessoes_de_Direitos <- read.csv("../MD2018/dados/CSVs/FCessoes_de_Direitos.csv")
+FCessoes_de_Direitos <- read.csv("dados/CSVs/FCessoes_de_Direitos.csv")
 
 #Uso attach para facilitar na navegação dos elementos do DataSet
 attach(FCessoes_de_Direitos)

@@ -1,0 +1,14 @@
+https://www.kaggle.com/c/quora-insincere-questions-classification#description
+
+Um problema existencial para qualquer site importante hoje é como lidar com conteúdo tóxico e divisor. 
+O Quora quer atacar esse problema de frente para manter sua plataforma onde os usuários podem se sentir 
+seguros compartilhando seus conhecimentos com o mundo.
+
+O Quora é uma plataforma que permite que as pessoas aprendam umas com as outras. No Quora, as pessoas
+ podem fazer perguntas e se conectar com outras pessoas que contribuem com percepções únicas e respostas 
+de qualidade. Um desafio fundamental é eliminar as perguntas insinceras - aquelas fundadas em premissas
+ falsas, ou que pretendem fazer uma declaração em vez de procurar respostas úteis.
+
+Nesta competição, a Kagglers desenvolverá modelos que identificam e sinalizam questões insinceras.
+ Até hoje, o Quora empregou aprendizado de máquina e revisão manual para resolver esse problema.
+ Com sua ajuda, eles podem desenvolver métodos mais escalonáveis ??para detectar conteúdo tóxico e enganoso.

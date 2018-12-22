@@ -1,0 +1,10 @@
+---
+title: "rattle"
+author: "Matheus Pimenta Reis"
+date: "11 de dezembro de 2018"
+output: html_document
+---
+
+
+#Ratle atividade  - 
+Analizar os ca

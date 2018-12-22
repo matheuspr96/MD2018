@@ -1,0 +1,33 @@
+---
+title: "atividade_3_prepros"
+author: "Matheus Pimenta Reis"
+date: "2 de dezembro de 2018"
+output: html_document
+---
+
+#Descrição da atidade
+Criar arquivo de leitura, seleção e alteração dos tipos dos atributos do dataset. Fazer pull request.
+
+
+Previamente configura-se o ambiente carregando os pacotes necessários.
+```{r}
+#Inicializa as dependÃªncias e carrega o DataSet
+require("pacman")
+FCessoes_de_Direitos <- read.csv("FCessoes_de_Direitos.csv")
+
+#Para facilitar o acesso aos elementos do dataset
+attach(FCessoes_de_Direitos)
+
+```
+
+Apos carregar os pacotes Ã© feita uma anÃ¡lise previa dos dados, como tipo e estrutura.
+```{r}
+
+#Convertemos os campos em tipos de dados convenFC ientes
+FCessoes_de_Direitos$Processo <- as.character(FCessoes_de_Direitos$Processo)
+FCessoes_de_Direitos$CPF.CNPJ.do.titular <- as.character(FCessoes_de_Direitos$CPF.CNPJ.do.titular)
+FCessoes_de_Direitos$Titular <- as.character(FCessoes_de_Direitos$Titular)
+
+FCessoes_de_Direitos$Situacao <- NULL
+
+```

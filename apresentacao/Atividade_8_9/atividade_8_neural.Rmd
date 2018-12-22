@@ -1,0 +1,51 @@
+---
+title: "atividade_8_neural"
+author: "Matheus Pimenta Reis"
+date: "2 de dezembro de 2018"
+output: html_document
+---
+
+#Redes neurais artificiais
+#a8  - redes neurais
+#a9  - caret 
+
+A atividade trata-se de gerar um modelo de classificação na qual com dados coletados do titanic o modelo preveja se a pessoa morreu ou não na tragedia, foi feita usando redes neurais do pacote caret alem de outros
+```{r cars}
+require("pacman")
+p_load("RSNNS")
+```
+
+
+```{r pressure, echo=FALSE}
+treino_titanic <- read.csv("./train.csv")
+teste_titanic <- read.csv("./test.csv")
+treino_titanic$Survived <- as.factor(treino_titanic$Survived)
+teste_titanic$Survived <- -1
+treino_titanic$Cabin <- NULL
+treino_titanic$Ticket <- NULL
+treino_titanic$Embarked <- NULL
+treino_titanic$PassengerId <- NULL
+treino_titanic$Name <- NULL
+
+
+modelo_nnet <- train(teste_titanic$Survived~.,
+                    data=treino_titanic,
+                    method="nnet")
+print(modelo_net)
+
+modelo_RF <- train(teste_titanic$Survived~.,
+                    data=treino_titanic,
+                    method="rf")
+print(modelo_RF)
+
+modelo_adaboost <- train(teste_titanic$Survived~.,
+                    data=treino_titanic,
+                    method="adaboost")
+print(modelo_adaboost)
+
+modelo_xgbDART<- train(teste_titanic$Survived~.,
+                    data=treino_titanic,
+                    method="xgbDART")
+print(modelo_xgbDART)
+
+```

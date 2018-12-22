@@ -1,0 +1,77 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+#A12 problema de classificação do kaggle: Santander data-minig, o data set oferece um cojunto de dados anonimos e o algoritmo de classificação tem que prever se o cliente está satisfeito ou não: 
+
+#Importar depedências
+```{r}
+require(pacman)
+p_load(adabag, plyr,doParallel,randomForest)
+```
+
+#Configura multiThreding
+```{r}
+cl <- makeCluster(detectCores())
+registerDoParallel(cl)
+```
+
+#configura entradas
+```{r}
+santander <- read.csv("./train.csv")
+santander$TARGET <- as.factor(santander$TARGET) 
+plot(santander$TARGET)
+count(santander$TARGET)
+```
+
+#Tratando dados
+```{r}
+ plot(santander$TARGET)
+```
+
+```{r}
+targetPOS <- subset(santander, TARGET == 1)
+targetNEG <- subset(santander, TARGET == 0)
+count(targetNEG)
+```
+
+```{r}
+targetPOS <- subset(santander, TARGET == 1)
+targetNEG <- subset(santander, TARGET == 0)
+count(targetNEG)
+```
+
+#Análise dos dados
+
+Rodamos uma ramdomFlorest para analziar possiveis variáveis importantes.
+```{r}
+
+modelo1500 <- randomForest(TARGET~.,               
+                           data=x_santander_train,
+                           ntree=1500,
+                           importance=TRUE)
+
+varImpPlot(modelo1500)
+col <- c("var15","saldo_var30","var38","saldo_var42","saldo_medio_var5_hace2","saldo_medio_var5_ult3","saldo_medio_var5_ult1","saldo_var5","saldo_medio_var5_hace3","num_meses_var5_ult3","num_var45_ult3","num_var35","num_var30","num_var4","num_var22_ult3","ind_var30","num_var45_hace3","num_var45_hace2","var36","num_med_var45_ult3","num_var45_ult1","num_var5","num_var42","num_var22_hace2","num_var22_hace3","num_var22_ult1","imp_op_var39_ult1","ind_var5","imp_op_var41_ult1")
+```
+
+#Roda o nnet
+```{r}
+
+modelo_rf <- train(TARGET~.,
+                         data=x_santander_train,
+                         method="rf")
+
+modelo_xgbDART <- train(TARGET~.,
+                         data=x_santander_train,
+                         method="xgbDART")                
+                      
+#library(Matrix)
+                         
+#santander_teste$TARGET <- -1
+print(modelo_nnet)
+                         
+#submission <- data.frame(ID=test.id, TARGET=preds)
+#cat("saving the submission file\n")
+#write.csv(submission, "submission.csv", row.names = F)

@@ -1,0 +1,75 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+#Apresentação sobre Dataset : PUBG
+
+Foi feita a apresentação em sala de aula
+onde usando o pacote caret foi feita uma tentativa de classificação, porém o intuito do dataset era ranking.
+Apenas apresentei o conteudo que tentei fazer, não cheguei a fazer slides.
+
+O que foi feito:
+#Carregamos os pacotes necessários para análise
+```{r}
+require("pacman")
+require("caret")
+library(doParallel);
+```
+
+#Multicore Procesing
+```{r}
+cl <- makeCluster(detectCores()-1)
+registerDoParallel(cl)
+```
+
+#input dados
+```{r}
+test  <- read.csv("../Dados/test_V2.csv")
+
+train <- read.csv("../Dados/train_V2.csv")
+
+```
+
+#Gerando amostragem aleatória
+```{r}
+s <- sample(4446966,40000)
+col <- c("kills", "killStreaks", "assists", "boosts", "headshotKills", "heals", "revives", "winPlacePerc")
+
+x_pubg_train <- train[s,col]
+x_pubg_train <- na.omit (x_pubg_train)
+x_pubg_train <- subset(x_pubg_train, select = -winPlacePerc)
+y_pubg_train <- x_pubg_train$winPlacePerc
+
+
+x_pubg_test <- train[-s,col]
+x_pubg_test <- na.omit(x_pubg_train)
+x_pubg_test <- subset(x_pubg_train, select = -winPlacePerc)
+y_pubg_test <- x_pubg_test$winPlacePerc
+
+
+```
+
+#Gerar model usando caret xgbTree
+```{r}
+s
+m_2 <- caret::train(winPlacePerc ~ .,
+                    data = x_pubg_train,
+                    method = "xgbTree",
+                    metric = "MAE"
+)
+```
+
+#randomFlorest
+```{r}
+x_pubg_train <- subset(x_pubg_train, select = -winPlacePerc)
+
+ mmodeloRF <- caret::train(y_pubg_train ~ .,
+                            data = x_pubg_train,
+                            method = "rf",
+                            metric = "MAE"
+)
+ 
+ prediction <- predict(mmodeloRF,subset(x_pubg_test, select = -winPlacePerc))
+ Accuracy(prediction, y_pubg_test)
+

@@ -5,10 +5,10 @@ date: "18 de outubro de 2018"
 output: html_document
 ---
 
-#Atividade 6: fazer apresenta√ß√£o sobre problema de classifica√ß√£o
+#Atividade 6: fazer apresentaÁ„o sobre problema de classificaÁ„o
 
 A atividade foi feita por meio do PREZI, segue link:
 https://prezi.com/view/1W4qOfrLZJMS2lY4pXvT/
 
 
-Os plots est√£o disponiveis em uma subpasta dentro desta atividade
+Os plots est„o disponiveis em uma subpasta dentro desta atividade

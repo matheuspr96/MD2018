@@ -18,7 +18,7 @@ p_load(readr)
 p_load(tidyverse)
 p_load(dplyr)
 
-FCessoes_de_Direitos <- read.csv("/Bibliotecas/Área de trabalho/Mineracao/MD2018/dados/CSVs/FCessoes_de_Direitos.csv")
+FCessoes_de_Direitos <- read.csv("../Atividade_3/FCessoes_de_Direitos.csv")
 
 ```
 

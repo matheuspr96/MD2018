@@ -1,0 +1,59 @@
+---
+title: "text-mining"
+author: "Matheus Pimenta Reis"
+date: "16 de dezembro de 2018"
+output: html_document
+---
+
+#Atividade TEXT Mining
+
+```{r}
+require(pacman)
+text_train<- read.csv("./train.csv")
+```
+
+```{r}
+p_load(readtext, tidyverse, quanteda)
+
+#Tratando dados 
+text_train$qid = as.integer(text_train$qid)
+text_train$target = as.factor(text_train$target)
+text_train$question_text = as.character(text_train$question_text)
+text_train$question_text = tolower(text_train$question_text)
+
+```
+
+
+#Construção do corpus
+```{r}
+corpusConstruct <- corpus(text_train, docid_field = "qid", text_field = "question_text")
+```
+
+#Tirar as palavras que não são importantes stopWords
+#Passo o curpus como parâmetro
+```{r}
+tokensDosTextos <- tokens(corpusConstruct, remove_punct = TRUE)
+```
+
+Construir um índice que representa uma matriz esparsa:
+```{r}
+indice <- dfm(tokensDosTextos, remove = c("http","quot","amp","gt","just","lt","bit.ly","tinyurl.com","tr.im",stopwords("en"))) %>% dfm_trim(min_docfreq = 2) # usar textstat_frequency
+opiniao <-corpusConstruct$documents$texts[ntoken(indice)>0]
+indice <- indice[ntoken(indice)>0,]
+indiceTFIDF <- dfm_tfidf(indice, scheme_tf = "boolean", scheme_df = "count")
+```
+
+#Agora classificamos uma vez que temos o indice
+Usaremos SVM 
+```{r}
+p_load(e1071,caret)
+treino <- createDataPartition(y=opinioes,p = .5)$Resample1
+
+modeloText <-svm(x=indiceTFIDF[treino], y=opiniao[treino], kernel="linear")
+
+predicoes <- predict(modelo, indiceTFIDF[-treino])
+
+confusionMatrix(predicoes, opinioes[-treino])
+
+```
+

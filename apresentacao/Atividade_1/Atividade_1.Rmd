@@ -4,12 +4,12 @@ author: "Matheus Pimenta Reis"
 date: "17 de outubro de 2018"
 output: html_document
 ---
-#Descrição da atividade
+#Descri��o da atividade
 
 Atividade 1: Criar conta no github, Fazer fork em github.com/albertiniufu/MD2018. Criar arquivo texto com breve explicação sobre o arquivo de dados escolhido em sala de aula. Fazer pull request.
 
 
-#Descrição do DataSet
+#Descri��o do DataSet
 
 O DataSet escolhido em sala de aula foi sobre o tema: Cadastro minerio, que consiste em uma planilha que conten diversos dados, entre eles
 informações da Superintendência que nos diz em que estado se encontra a mesma, no campo de processos é um numero que deve identificar, tipo 

@@ -44,7 +44,7 @@ require(dplyr)
 
 
 #Seleciono as colunas que quero do dataFrame
-prepareTableContigencia <- select(FCessoes_de_Direitos,"Municipio.s.","Substancia.s.")
+prepareTableContigencia <- select(iris,"Petal.Length","Petal.Width")
 
 #Coverto pro tipo table
 tabelaContigencia <- table(prepareTableContigencia)
